@@ -3,10 +3,7 @@
 {% load url from future %}
 
 {% block breadcrumbs %}
-<ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
 <li>{{ title }}</li>
-</ul>
 {% endblock %}
 
 {% block content %}

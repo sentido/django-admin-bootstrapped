@@ -8,6 +8,8 @@
 
 {% block breadcrumbs %}{% endblock %}
 
+{% block bodyclass %}page-login{% endblock %}
+
 {% block content %}
 {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
 <div class="alert alert-error">
