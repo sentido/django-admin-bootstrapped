@@ -11,57 +11,94 @@
 {% block bodyclass %}page-login{% endblock %}
 
 {% block content %}
-{% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
-<div class="alert alert-error">
-{% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-</div>
-{% endif %}
+    {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
+        <div class="alert alert-error">
+            {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+        </div>
+    {% endif %}
 
-{% if form.non_field_errors or form.this_is_the_login_form.errors %}
-{% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
-<div class="alert alert-error">
-    {{ error }}
-</div>
-{% endfor %}
-{% endif %}
+    {% if form.non_field_errors or form.this_is_the_login_form.errors %}
+        {% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
+            <div class="alert alert-error">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-<div id="content-main">
-<form class="form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_username" class="required">{% trans 'Username:' %}</label> 
-    </div>
-    <div class="controls">
-        {{ form.username }}
-        {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.username.errors|striptags }}</span>{% endif %}
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_password" class="required">{% trans 'Password:' %}</label> 
-    </div>
-    <div class="controls">
-        {{ form.password }}
-        {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.password.errors|striptags }}</span>{% endif %}
-    </div>
-    <input type="hidden" name="this_is_the_login_form" value="1" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </div>
-  {% url 'admin_password_reset' as password_reset_url %}
-  {% if password_reset_url %}
-  <div class="control-group">
-    <div class="controls">
-        <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
-    </div>
-  </div>
-  {% endif %}
-  <div class="form-actions">
-    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
-  </div>
-</form>
+    <div id="content-main">
+        <style type="text/css">
+                /* Override some defaults */
+            html, body {
+                background-color: #eee;
+            }
+            body {
+                padding-top: 40px;
+            }
+            .formwrapper {
+                width: 100%;
+                background-color: #fff;
+                padding: 20px;
+                margin: 0 -20px;
+                -webkit-border-radius: 10px 10px 10px 10px;
+                -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            }
+            .control-group input[type="text"],.control-group input[type="password"] {
+                -webkit-box-sizing: content-box;
+                -moz-box-sizing: content-box;
+                box-sizing: content-box;
+                height: 28px;
+            }
 
-<script type="text/javascript">
-document.getElementById('id_username').focus()
-</script>
-</div>
+        </style>
+        <div class="row-fluid">
+            <div class="span4">&nbsp;</div>
+            <div class="span4">
+                <div class="formwrapper">
+                    <form class="form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                        <div class="control-group">
+                            <div class="control-label">
+                                <label for="id_username" class="required"><h4>{% trans 'Username:' %}</h4></label>
+                            </div>
+                            <div class="controls">
+                                <div>{{ form.username }}</div>
+                                {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.username.errors|striptags }}</span>{% endif %}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-label">
+                                <label for="id_password" class="required"><h4>{% trans 'Password:' %}</h4></label>
+                            </div>
+                            <div class="controls">
+                                <div>{{ form.password }}</div>
+                                {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.password.errors|striptags }}</span>{% endif %}
+                            </div>
+                            <input type="hidden" name="this_is_the_login_form" value="1" />
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        </div>
+                        {% url 'admin_password_reset' as password_reset_url %}
+                        {% if password_reset_url %}
+                            <div class="control-group">
+                                <div class="controls">
+                                    <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="control-group">
+                            <div class="controls">
+                        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary"/>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="span4">&nbsp;</div>
+        </div>
+        <script type="text/javascript">
+            document.getElementById('id_username').focus()
+        </script>
+    </div>
 {% endblock %}
