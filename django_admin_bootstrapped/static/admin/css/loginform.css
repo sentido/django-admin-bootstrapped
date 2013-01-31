@@ -1,0 +1,24 @@
+html, body {
+    background-color: #eee;
+}
+body {
+    padding-top: 40px;
+}
+.formwrapper {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+.control-group input[type="text"],.control-group input[type="password"] {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 28px;
+}
