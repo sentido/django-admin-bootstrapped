@@ -30,16 +30,13 @@
 {% endif %}{% endif %}
 {% endblock %}
 
-{% block bodyclass %}_change-list{% endblock %}
+{% block bodyclass %}change-list {{ app_label }} {% endblock %}
 
 {% if not is_popup %}
 {% block breadcrumbs %}
-<ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
-<!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>-->
-<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{  app_label|title }}</a> <span class="divider">/</span></li>
-<li>{{ cl.opts.verbose_name_plural|capfirst }}</li>
-</ul>
+    <!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>-->
+    <li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{  app_label|title }}</a> <span class="divider">/</span></li>
+    <li>{{ cl.opts.verbose_name_plural|capfirst }}</li>
 {% endblock %}
 {% endif %}
 
@@ -53,9 +50,9 @@
             <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
         {% endif %}
-        {% comment %} {% if action_form and actions_on_top and cl.full_result_count %}
+        {% if action_form and actions_on_top and cl.full_result_count %}
             {% admin_actions %}
-        {% endif %}{% endcomment %}
+        {% endif %}
     </div>
     {% endblock %}
 
@@ -110,6 +107,7 @@
 
                 {% block result_list %}
                     {% result_list cl %}
+
                 {% endblock %}
             </div>
         </div>
@@ -118,7 +116,7 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="form-inline pull-left">
-                        {% if action_form and cl.full_result_count %}
+                        {% if action_form and actions_on_bottom and cl.full_result_count %}
                             {% admin_actions %}
                         {% endif %}
                     </div>

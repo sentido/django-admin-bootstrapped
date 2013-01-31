@@ -11,6 +11,7 @@
 <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
 
+
 <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
 <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -29,7 +30,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+<body class="admin {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
 <div class="container-fluid">
