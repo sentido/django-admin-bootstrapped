@@ -10,6 +10,7 @@
     <link href="/admin/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/admin/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/admin/static/admin/css/loginform.css" />
+    <script src="/admin/static/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -34,11 +35,13 @@
         <div class="row-fluid">
             <div class="span4">&nbsp;</div>
             <div class="span4">
-                <div class="formwrapper">
+                <div class="formwrapper alert alert-info">
                 <div class="row-fluid">
-                     <h4>{% trans 'Администрация' %}</h4>
-                    <hr/>
+                    <div class="span4">&nbsp;</div>
+                     <h4 class="muted span4">{% trans 'Администрация' %}</h4>
+                    <div class="span4">&nbsp;</div>
                 </div>
+                    <hr/>
                     <form class="form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
                         <div class="control-group">
                             <div class="control-label">
