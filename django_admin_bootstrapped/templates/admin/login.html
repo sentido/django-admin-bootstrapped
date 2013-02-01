@@ -35,10 +35,14 @@
             <div class="span4">&nbsp;</div>
             <div class="span4">
                 <div class="formwrapper">
+                <div class="row-fluid">
+                     <h4>{% trans 'Администрация' %}</h4>
+                    <hr/>
+                </div>
                     <form class="form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
                         <div class="control-group">
                             <div class="control-label">
-                                <label for="id_username" class="required lead"><h4><em>{% trans 'Username:' %}</em></h4></label>
+                                <label for="id_username" class="required lead"><h4>{% trans 'Username:' %}</h4></label>
                             </div>
                             <div class="controls">
                                 <div>{{ form.username }}</div>
@@ -47,7 +51,7 @@
                         </div>
                         <div class="control-group">
                             <div class="control-label">
-                                <label for="id_password" class="required lead"><h4><em>{% trans 'Password:' %}</em></h4></label>
+                                <label for="id_password" class="required lead"><h4>{% trans 'Password:' %}</h4></label>
                             </div>
                             <div class="controls">
                                 <div>{{ form.password }}</div>
