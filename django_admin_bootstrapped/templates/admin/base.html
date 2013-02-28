@@ -4,11 +4,12 @@
 <title>{% block title %}{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block extrastyle %}{% endblock %}
-
 <!-- Le styles, placed after extrastyle to correctly override default styling -->
 <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
 <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet">
+
+{% block extrastyle %}{% endblock %}
+
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
 
 
