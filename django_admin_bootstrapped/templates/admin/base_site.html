@@ -1,7 +1,13 @@
 {% extends "admin/base.html" %}
 {% load i18n %}{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}
 
-{% block title %}{% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_name.html" cl.opts.app_label|default:"Django administration" %} | {% trans 'Django site admin' %}{% endblock %}
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_name.html" cl.opts.app_label|default:"Django administration" %} | {% trans 'Django site admin' %}
+    {% endif %}
+{% endblock %}
 
 {% block branding %}
 <a class="brand" href="{% url 'admin:index' %}">{% trans 'Django administration' %}</a>
